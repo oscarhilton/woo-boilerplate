@@ -1,0 +1,47 @@
+<div class="wrapper">
+  <h2>Bag</h2>
+  {% set cart = function('get_cart_products')%}
+  <div class="cart-products">
+    {% if cart is empty %}
+    Your cart is empty
+    {% else %}
+    {% for product in cart %}
+    <div class="product" data-name="{{product.name}}">
+      <div class="image-container">
+        <!-- <img src="{{ product.thumbnail }}" /> -->
+      </div>
+      <div class="details-container">
+        <div class="title-container">
+          <span class="title">
+            <a href="{{product.link}}">
+              {{ product.name }}
+            </a>
+          </span>
+          <span class="price">£{{ product.price }}</span>
+        </div>
+
+        <button data-key="{{product.key}}" data-name="{{product.name}}" data-url="{{ function('get_ajax_page') }}" class="q-increment q-button">+</button>
+        <span class="quantity-container">
+          <span class="quantity">
+            {{ product.quantity }}
+          </span>
+        </span>
+        <button data-key="{{product.key}}" data-name="{{product.name}}" data-url="{{ function('get_ajax_page') }}" class="q-decrement q-button">‒</button>
+
+        <span class="btn remove-item" data-id="{{ product.id }}" data-url="{{ function('get_ajax_page') }}">
+          remove item
+        </span>
+      </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+  </div>
+  <a href="{{ function('get_permalink', 6) }}">
+    <div class="checkout-now product-btn">
+      Checkout now
+      <div class="cart-total">
+        {{ function('get_cart_total') }}
+      </div>
+    </div>
+  </a>
+</div>

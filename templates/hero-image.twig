@@ -1,0 +1,9 @@
+<div id="hero-image">
+  <ul class="slides" data-time="{{heroTime}}">
+  {% for image in homeHero %}
+    <li class="slide">
+      <img src="{{ TimberImage(image) }}" />
+    </li>
+  {% endfor %}
+  </ul>
+</div>

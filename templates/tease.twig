@@ -1,0 +1,35 @@
+<article class="tease tease-{{product.post_type}}" id="tease-{{product.ID}}" >
+	{% block content %}
+		{% if product.get_thumbnail %}
+			<div class="thumbnail">
+				<img class="
+				{% if product.hover_image %}
+				top
+				{% endif %}
+				" src="{{product.thumbnail.src}}" />
+				{% if product.hover_image %}
+				<span src="{{ TimberImage(product.get_field('hover_image')).src }}" />
+				{% endif %}
+				<div class="loading">
+				</div>
+			</div>
+		{% endif %}
+		<h2 class="h2">{{product.title}}</h2>
+
+		<form>
+			{% if (product._sale_price) %}
+			<span class="old-price">£{{product._regular_price}}</span>
+			<span class="sale-price">Sale! £{{product._price}}</span>
+			{% else %}
+			{% if (product._regular_price) %}
+			<div class="price">£{{product._price}}</div>
+			{% endif %}
+			{% endif %}
+			<div class="quantity-selector">
+				<span>Qty: </span><input type="number" value="1" class="quantity"/>
+			</div>
+			<input value="Add to Bag" type="submit" class="add-to-cart" data-id="{{product.ID}}" data-url="{{ function('get_ajax_page') }}"/>
+		</form>
+
+	{% endblock %}
+</article>

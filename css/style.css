@@ -1,0 +1,6 @@
+.woocommerce-info {
+  border-top: none !important;
+  padding: 0 !important;
+  background: transparent !important; }
+  .woocommerce-info::before {
+    content: '' !important; }

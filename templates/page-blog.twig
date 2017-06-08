@@ -1,0 +1,31 @@
+{% extends 'base.twig' %}
+
+{% block side %}
+<div class="side-text">
+  <h1>Blog</h1>
+  {% if post.content %}
+    <p>{{post.content}}</p>
+  {% endif %}
+  <h3>Categories</h3>
+  <ul>
+    {% for category in categories %}
+    <li>
+      <a href="{{category.link}}">{{ category.name }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<section id="blog" class="page-padding">
+  {% for post in posts %}
+  <article class="post-content">
+    <h2>{{post.title}}</h2>
+    <p>{{post.content}}</p>
+  </article>
+  {% endfor %}
+</section>
+
+{% endblock %}

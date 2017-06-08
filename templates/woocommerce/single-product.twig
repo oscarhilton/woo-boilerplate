@@ -1,0 +1,44 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+<div class="single-product-wrapper">
+    <div class="product-thumb">
+      <div class="product-thumb-container">
+        <img src="{{post.thumbnail}}" />
+      </div>
+    </div>
+</div>
+<div class="side-text">
+  <div class="product-details">
+    <ul>
+      <li>
+        <h1>{{product.get_title()}}</h1>
+      </li>
+      <li>
+        {% if product.is_in_stock() %}
+        Purchase print
+        {% else %}
+        Out of stock
+        {% endif %}
+      </li>
+      <li>
+        {% if product.is_on_sale() %}
+        <span class="">
+            {{product.get_price()}}
+        </span>
+        <span>
+            {{product.get_sale_price()}}
+        </span>
+        {% else %}
+        <span>
+            £{{product.get_price()}}
+        </span>
+        {% endif %}
+      </li>
+      <li class="add-to-cart" data-id="{{product.get_id()}}" data-url="{{ function('get_ajax_page') }}">
+        add to cart
+      </li>
+    </ul>
+</div>
+{% endblock %}

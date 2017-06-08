@@ -1,0 +1,45 @@
+{% extends "base.twig" %}
+
+{% block side %}
+
+<div class="side-text">
+  <h3>{{title}}</h3>
+  <p>{{category.description}}</p>
+</div>
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="product-links">
+      {% for product in products %}
+      <div class="product">
+          <a href="{{product.link}}">
+            <div class="product-image">
+              <img src="{{product.thumbnail|resize(300)}}" />
+            </div>
+          </a>
+          <div class="product-thumb-details">
+            <a href="{{product.link}}" class="test-link" data-title="{{product.slug}}">{{product.title}}</a>
+          </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- <div class="product-previews">
+      <ul>
+          {% for product in products %}
+          <li class="product-thumb" data-title="{{product.slug}}">
+              <img src="{{product.thumbnail.src}}" />
+          </li>
+          {% endfor %}
+      </ul>
+    </div> -->
+
+    <div class="category-description">
+
+
+      <div class="background" style="background: url({{category.thumbnail}})"></div>
+    </div>
+
+{% endblock %}

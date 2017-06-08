@@ -1,0 +1,22 @@
+@mixin grid($type,$num,$cols) {
+    #{$type}: calc(100% / #{$cols}* #{$num});
+}
+@mixin font-size($sizeValue: 1.6) {
+    font-size: ($sizeValue * 10) + px;
+    font-size: $sizeValue + rem;
+}
+
+
+$xs-mobile: "(min-width: 0px) and (max-width: 374px)";
+$mobile: "(min-width: 375px) and (max-width: 667px)";
+$tablet: "(min-width: 668px) and (max-width: 1023px)";
+$ipad-pro: "(min-width: 1020px) and (min-height: 901px) and (min-height: 1000px) and (-webkit-min-device-pixel-ratio: 2)  and (orientation: landscape)";
+$desktop: "(min-width: 1020px) and (max-width: 1499px)";
+$big-desktop: "(min-width: 1500px)";
+
+@media #{$big-desktop}, #{$desktop}
+{
+}
+@media #{$mobile}, #{$xs-mobile}, #{$tablet}
+{
+}
